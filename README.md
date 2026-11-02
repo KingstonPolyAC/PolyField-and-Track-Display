@@ -1,10 +1,10 @@
-# PolyField Track
+# PolyField & Track Display
 
 **Results display software for athletics competitions.**
 
-Developed by [PolyField](https://www.polyfield.co.uk) part of [Kingston Athletic Club and Polytechnic Harriers (KACPH)](https://www.kingstonandpoly.org), PolyField Track connects to FinishLynx and Timetronics photo finish systems and distributes live results to browser-based display screens across a local network — no additional software required on the display device.
+Developed by [PolyField](https://www.polyfield.co.uk) part of [Kingston Athletic Club and Polytechnic Harriers (KACPH)](https://www.kingstonandpoly.org), PolyField & Track Display connects to FinishLynx and Timetronics photo finish systems and distributes live results to browser-based display screens across a local network — no additional software required on the display device.
 
-📖 **[Read the manual and help guide →](https://kingstonpolyac.github.io/PolyField-Track/)**
+📖 **[Read the manual and help guide →](https://kingstonpolyac.github.io/PolyField-and-Track-Display/)**
 
 ---
 
@@ -27,11 +27,11 @@ Developed by [PolyField](https://www.polyfield.co.uk) part of [Kingston Athletic
 
 ## Download
 
-See the [Releases](https://github.com/KingstonPolyAC/PolyField-Track/releases) page for the latest version.
+See the [Releases](https://github.com/KingstonPolyAC/PolyField-and-Track-Display/releases) page for the latest version.
 
 Each release includes:
-- `PolyField-Track-mac.zip` — macOS application
-- `PolyField-Track.exe` — Windows executable
+- `PolyField-and-Track-Display-<version>.app.zip` — macOS application
+- `PolyField-and-Track-Display-<version>.exe` — Windows executable
 - `polyfield.lss` — FinishLynx LSS script for running clock integration
 - `polyfield-wind.lss` — FinishLynx LSS script for wind integration
 
@@ -39,7 +39,7 @@ Each release includes:
 
 ## Documentation
 
-- **[Online manual &amp; help guide](https://kingstonpolyac.github.io/PolyField-Track/)** — the full operator manual
+- **[Online manual &amp; help guide](https://kingstonpolyac.github.io/PolyField-and-Track-Display/)** — the full operator manual
 - **[Scoreboard settings (PDF)](./PolyField%20Scoreboard%20settings.pdf)** — FinishLynx scoreboard configuration
 
 ---
@@ -54,7 +54,7 @@ Each release includes:
 
 ## Licence
 
-PolyField Track is free for **non-commercial use** under the [CC BY-NC 4.0](./LICENSE) licence.
+PolyField & Track Display is free for **non-commercial use** under the [CC BY-NC 4.0](./LICENSE) licence.
 
 **Commercial use** — including timing companies, event management businesses, and commercial results or broadcast services — requires a separate commercial licence.
 
@@ -62,4 +62,4 @@ For commercial licensing enquiries: [support@polyfield.co.uk](mailto:support@pol
 
 ---
 
-*PolyField Track is developed and maintained by PolyField by KACPH (Kingston Athletic Club and Polytechnic Harriers).*
+*PolyField & Track Display is developed and maintained by PolyField by KACPH (Kingston Athletic Club and Polytechnic Harriers).*

@@ -1,11 +1,11 @@
 ---
-title: PolyField Track — Handleiding
-description: Help en gebruikershandleiding voor PolyField Track — software voor het bekijken en weergeven van resultaten voor de foto-finishsystemen FinishLynx en TimeTronics.
+title: PolyField & Track Display — Handleiding
+description: Help en gebruikershandleiding voor PolyField & Track Display — software voor het bekijken en weergeven van resultaten voor de foto-finishsystemen FinishLynx en TimeTronics.
 lang: nl
 permalink: /nl/
 ---
 
-# PolyField Track
+# PolyField & Track Display
 
 Software voor het bekijken en weergeven van resultaten voor de foto-finishsystemen FinishLynx en TimeTronics. Draait op Windows en Mac als een desktoptoepassing die gekoppeld is aan uw map met foto-finishresultaten.
 
@@ -16,7 +16,7 @@ Software voor het bekijken en weergeven van resultaten voor de foto-finishsystem
 
 ## Overzicht
 
-PolyField Track zet uw FinishLynx- of TimeTronics-resultaten om in live weergaven door uw hele accommodatie. Eén desktopinstantie bewaakt uw resultatenmap en levert een webinterface die elk apparaat op het netwerk kan openen — scoreborden, een zelfbedieningskiosk voor atleten, een snelheidsbord en meer.
+PolyField & Track Display zet uw FinishLynx- of TimeTronics-resultaten om in live weergaven door uw hele accommodatie. Eén desktopinstantie bewaakt uw resultatenmap en levert een webinterface die elk apparaat op het netwerk kan openen — scoreborden, een zelfbedieningskiosk voor atleten, een snelheidsbord en meer.
 
 De software houdt de **operator aan het roer**: resultaten verschijnen pas nadat ze zijn opgeslagen, wat een positieve validatie vóór weergave waarborgt. Meerdere keren opslaan wordt ondersteund — zo kunt u atleten van langeafstandslopen vroeg tonen, of een race vrijgeven zodra de top 3 prestaties toegewezen heeft gekregen.
 
@@ -35,7 +35,7 @@ Dit is de map waarin FinishLynx of TimeTronics resultaten opslaat (LIF, enz.). K
 
 ![Stel de resultatenmap in of wijzig het pad in de rechterbovenhoek:]({{ '/assets/desktop.png' | relative_url }})
 
-Zodra dit is ingesteld, wordt de webinterface opgebouwd en verschijnt het toegangsadres boven aan de desktoptoepassing (bijv. `http://track.local:3000` of `http://<uw-IP>:3000`).
+Zodra dit is ingesteld, wordt de webinterface opgebouwd en verschijnt het toegangsadres boven aan de desktoptoepassing (bijv. `http://display.local:3000` of `http://<uw-IP>:3000`).
 
 ### 2. Een weergave openen
 
@@ -53,10 +53,10 @@ Het bedieningspaneel is de werkplek van de operator. Boven aan stelt u de result
 | **Schermbeveiliging** | Toon een gekoppelde **afbeelding** of een gekozen **opgeslagen lay-out** over het schermbeveiligingsgebied. Als er al een bron is ingesteld, schakelt één druk die aan/uit; de knop ⚙ heropent de opties. |
 | **Lijnweergave** | Stuur de nieuwste foto-finishafbeelding naar de weergaven. Grijs weergegeven totdat er foto-finish-JPG's in de resultatenmap verschijnen. |
 | **Klok** | Toon de lopende klok schermvullend op schermen met een klokwidget. |
-| **Records** | Toon feestelijke recordkaarten voor atleten die als record zijn gemarkeerd. Vorige / Volgende doorlopen de gemarkeerde atleten of de handmatige selectie. |
+| **Testen / Podium / Handmatige selectie** | Zichtbaar zodra een lay-out momenten gebruikt: speel een voorbeeldkaart op alle schermen, toon het podium van de huidige uitslag, of stuur een gekozen record. Zie [Momenten](#moments). |
 | **Aftelklok** | Tel af naar een doeltijdstip. Voer de tijd in en Start; verbergt zichzelf op nul. |
 | **Lay-outbouwer** | Open de lay-outontwerper (zie hieronder). |
-| **LIF bladeren** | Toon een eerder resultaat uit de bewaakte map opnieuw. |
+| **LIF bladeren** | Toon een eerder resultaat uit de bewaakte map opnieuw. De eerste optie, **Leeg**, haalt de uitslag van alle schermen. |
 
 ## Overlays
 
@@ -76,10 +76,9 @@ Telt af naar een **doeltijdstip**, afgelezen van de eigen klok van elk scherm. V
 
 ### Records
 
-Markeer het record van een atleet in FinishLynx (zie [instellen](#finishlynx-setup)), druk dan op **Records** om een feestelijke kaart te tonen — atleet, categorie, onderdeel, club en tijd. Vorige / Volgende doorlopen meerdere gemarkeerde atleten.
-Handmatige selectie van een atleet uit een bestaand LIF-bestand en die als record markeren, is ook mogelijk. Druk op **Records** en vervolgens op **Handmatige selectie** om het proces in 3 stappen te starten. 1. Kies de race. 2. Kies de prestatie. 3. Kies of voer het recordtype in.
+Records worden nu als [momenten](#moments) getoond. Markeer het record van een atleet in het User 3-veld van FinishLynx (bijv. `PB` of `W50 WR`) en elk scherm dat momenten gebruikt toont een recordkaart zodra de uitslag is opgeslagen. Voor een record dat FinishLynx niet markeerde, druk op **Handmatige selectie** in het hoofdvenster: 1. kies de race, 2. kies de prestatie, 3. kies of typ het soort record.
 
-![Handmatige recordselectie:]({{ '/assets/records.png' | relative_url }})
+![Handmatige selectie van records:](assets/records.png)
 
 ### Lijnweergave
 
@@ -103,22 +102,52 @@ De standaard rotatiesnelheid van atleten is **5 seconden**.
 
 **LIF bladeren** toont eerdere resultaten uit de bewaakte map zodat u er een opnieuw kunt tonen — handig voor fotomomenten of om een eerdere reeks opnieuw weer te geven. Een oud bestand openen in FinishLynx verstoort de live weergave *niet*; alleen een echte wijziging van een resultaat promoot het.
 
+**Leeg**, boven aan de lijst, haalt de uitslag van alle schermen, terug naar *Wachten op resultaten*. De volgende opgeslagen uitslag verschijnt gewoon.
+
 ## Schermen verbinden {#connecting-screens}
 
 Open `http://<adres>:3000/display` op elk scherm; het krijgt automatisch een nummer. De pagina **Scherm-QR-codes** (via het paneel Schermen, of `/screens-overview`) toont een scanbare code voor elke weergavepagina, zodat u een telefoon, tablet of tv-browser snel naar de juiste pagina kunt sturen.
 
 In het paneel **Schermen** wijst u aan elk scherm afzonderlijk een opgeslagen lay-out toe en verwijdert u schermen die niet meer actief zijn. De desktop heeft ook een ingebouwde scoreboard-voorbeeldweergave die een echt scherm nabootst zodra u er een lay-out aan toewijst.
 
-## De Lay-outbouwer
+Schermen laden zichzelf opnieuw na een herstart van de app en houden hun nummer en lay-out. Om een lay-out op de echte schermen te bekijken, gebruik **Voorbeeld → Op schermen** in de lay-outbouwer.
 
-Open de Lay-outbouwer om aangepaste scoreborden te ontwerpen met widgets. Elke lay-out heeft een beeldverhouding en een thema, en wordt gebouwd door widgets op een raster te plaatsen en te positioneren.
+## De lay-outbouwer
 
-- **Voeg widgets toe** vanuit het palet aan de linkerkant, gegroepeerd op Huidig onderdeel, Resultaten, Overlays en Informatie.
-- **Selecteer een widget** om zijn **Eigenschappen** rechts te bewerken — positie & grootte, kolommen, tekstgrootte, lettertype, kleuren en widgetspecifieke opties.
-- **Overlappende widgets:** gebruik de navigator **◀ Widgets ▶** boven aan het paneel Eigenschappen om de selectie door elke widget te doorlopen, ook die verborgen achter andere.
-- **Wijs** een lay-out toe aan een scherm (of de scoreboard-voorbeeldweergave) via het paneel Schermen.
+Open de lay-outbouwer om lay-outs uit widgets te maken. Elke lay-out heeft een canvasvorm en een thema.
+
+- **Begin** met een sjabloon, of sleep widgets uit de lijst links naar het canvas.
+- **Selecteer een widget** om het te bewerken in het paneel **Widget** rechts. Het belangrijkste staat bovenaan; de rest staat onder **Meer instellingen**. Het paneel **Canvas** bevat de instellingen van de lay-out: naam, thema, vorm, **Tonen op schermen** en **Momenten**.
+- **Tekst in een widget** sleept u direct op het canvas zodra het widget geselecteerd is. Onderdelen klikken op één lijn en kunnen links, midden of rechts uitgelijnd worden.
+- **Ongedaan maken** met ⌘/Ctrl+Z, en druk op **?** voor alle sneltoetsen. De zijpanelen klappen in voor meer ruimte op het canvas.
+- **Tonen op schermen** — vink de schermen aan waarop de lay-out moet verschijnen.
+- **Voorbeeld** — **In browser** toont de lay-out hier met voorbeeld- of live-gegevens. **Op schermen** toont hem op alle verbonden schermen tot u stopt; daarna keert elk scherm terug naar zijn eigen lay-out.
 
 ![De Lay-outbouwer — het widgetpalet links, het lay-outcanvas in het midden en het eigenschappenpaneel (met de widgetnavigator) rechts]({{ '/assets/Layout-Builder.png' | relative_url }})
+
+## Momenten {#moments}
+
+Momenten zijn korte kaarten die op de schermen verschijnen zodra een uitslag is opgeslagen. Zet ze per lay-out aan: **Canvas → Momenten → Momenten gebruiken in deze lay-out**.
+
+- **Na een race tonen** — de **Winnaar** (met het verschil) of het **Podium**. Bij para-races wordt het podium gerangschikt op RAZA-score.
+- **Fotofinish bij nipte races** — verschijnt eerst als de eerste twee binnen 0,05 s liggen (instelbaar), met de finishfoto als FinishLynx die voor deze race opsloeg.
+- **Records uit de uitslag** — elke atleet die in het User 3-veld van FinishLynx is gemarkeerd krijgt een kaart. Het record van de winnaar staat op diens eigen kaart.
+- **Alleen finales** — standaard aan: kaarten verschijnen alleen bij onderdelen met „Final" in de naam. Records verschijnen in elke ronde.
+- **Afspelen over** — het hele scherm, of één widget.
+
+Een kaart verschijnt één keer per race, zodra de uitslag is opgeslagen — nooit bij het herladen van een pagina of als u een oude uitslag opnieuw toont. In het hoofdvenster speelt **Testen** een voorbeeldkaart op alle schermen die momenten gebruiken, en toont **Podium** de top drie van de huidige uitslag, voor ceremonies.
+
+### Overgang tussen uitslagen
+
+Als de uitslag van een ander onderdeel verschijnt, speelt eerst een overgang van 2 seconden met het PolyField-logo, waarna de uitslag rij voor rij binnenkomt. Dit staat aan op elke lay-out. Kies bij **De overgang toont** een van uw eigen lay-outs (bijvoorbeeld een sponsorbord), of vink **Overgang tussen uitslagen** uit.
+
+## Uitslagen op het scherm
+
+- **Rij voor rij** — een nieuwe uitslag komt rij voor rij binnen, winnaar eerst. Bij een gecorrigeerde uitslag schuiven de rijen naar hun nieuwe plek. Vink **Rijen animeren als uitslagen binnenkomen of veranderen** uit op het widget om dit uit te zetten.
+- **Tekst die past** — lange namen en onderdeelnamen worden kleiner in plaats van afgekapt.
+- **Para-races** — als het onderdeelbestand atleten een WPA-klasse geeft, voegt de uitslagentabel de kolommen **Klasse** en **RAZA** toe, in finishvolgorde.
+- **Geen namen** — sommige races hebben alleen startnummers; rijen en kaarten tonen dan het startnummer.
+- **Thema's** — uitslagen, veldborden en klokken volgen het thema van de lay-out.
 
 ## Widgetreferentie
 
@@ -130,10 +159,8 @@ Open de Lay-outbouwer om aangepaste scoreborden te ontwerpen met widgets. Elke l
 | Lopende klok / Gestopte tijd | Live of bevroren klok. |
 | Onderdeelnaam / Wind | Naam en wind van het huidige onderdeel of resultaat. |
 | Aangepaste tekst / Logo / Tijd van de dag | Statische tekst, een afbeelding/logo, of de tijd. |
-| RAZA-klassementen | WPA-punten voor para-atletiek. |
-| PolyField-veldwidgets (Field Results / Recent Results / Jump Ruler / Vertical Jumps) | Live veldonderdeel-weergaven, gevoed door de PolyField Field-server — gegroepeerd onder **PolyField Server** in het palet. Zie [Weergaven voor horizontale sprongen](#horizontal-jump-displays) en [Weergaven voor verticale sprongen](#vertical-jump-displays) hieronder. |
+| PolyField-veldwidgets (Field Results / Recent Results / Werpen / Jump Ruler / Vertical Jumps) | Live weergaven van technische nummers vanuit PolyField Server, gegroepeerd onder **PolyField Server**. Zie [Werpen](#throws-display), [Horizontale sprongen](#horizontal-jump-displays) en [Verticale sprongen](#vertical-jump-displays). |
 | Overlays Tekst / Schermbeveiliging / Lijnweergave / Klok | De tekstbanner, schermbeveiligingsafbeelding/-lay-out, foto-finish en schermvullende klok (getoond wanneer de operator de bijbehorende overlay activeert). |
-| Record-overlay | Feestelijke recordkaarten (versleepbare elementen, grootte per element). |
 | Aftelklok-overlay | Aftellen naar een doeltijd met een bewerkbaar bijschrift. |
 
 ## Meerkamppunten
@@ -151,7 +178,7 @@ De tijd die voor het opzoeken wordt gebruikt is de weergegeven waarde (al afgero
 
 ## Weergaven voor horizontale sprongen {#horizontal-jump-displays}
 
-Deze widgets tonen live veldonderdeelgegevens van een **PolyField Field-server** op hetzelfde netwerk. Voeg ze toe vanuit de groep **PolyField Server** in de Lay-outbouwer; elk heeft een **IP-adres** en **poort** voor de server (standaard `192.168.0.90:8080`).
+Deze widgets tonen live gegevens van technische nummers uit **PolyField Server** op hetzelfde netwerk. Voeg ze toe vanuit de groep **PolyField Server** in de lay-outbouwer. Stel het serveradres één keer in het hoofdvenster in, onder **PolyField Server**; alle veldwidgets gebruiken het.
 
 ### Jump Ruler (PolyField)
 
@@ -159,7 +186,7 @@ Een liniaal langs de bak voor **verspringen en hinkstapspringen** — ideaal voo
 
 ![De Jump Ruler in de Lay-outbouwer — de aan de bak verankerde schaal met de huidige springer, de vorige springer, de top-3-pinnen en het wedstrijdgemiddelde](assets/jump-ruler.png)
 
-- **Koppel hem aan één onderdeel.** Kies het onderdeel in het **Onderdeel**-menu (alleen onderdelen voor *horizontale sprongen* worden vermeld). Meerdere linialen kunnen tegelijk draaien voor verschillende onderdelen, elk apart gekoppeld.
+- **Volgt het lopende onderdeel.** Standaard toont de liniaal het lopende onderdeel horizontale sprongen en gaat vanzelf door naar het volgende. Voor linialen in verschillende zones vinkt u per liniaal de onderdelen aan. Nieuwe linialen zetten hun tekst in een strook boven de pinnen.
 - **Afzetbalk.** De schaal is aan de bak verankerd: voer het **liniaalbegin** in voor verspringen en voor elke hinkstap-balk (**7 / 9 / 11 / 13 m**, met 2 decimalen, bijv. `11.02`). De actieve balk van de atleet (uit de feed) bepaalt welk begin wordt gebruikt, zodat markeringen altijd op de juiste plek vallen.
 - **Top-3-pinnen.** De drie beste prestaties verschijnen als pinnen met afnemende hoogte (1e het hoogst, dan 2e en 3e), met de 1e altijd op de voorgrond. Een markering buiten het zichtbare bereik verschijnt als **pijl** aan de rand die de richting aanwijst.
 - **Gemiddelde-pin.** Een optionele **Avg**-pin plot het wedstrijdgemiddelde.
@@ -177,9 +204,19 @@ Een liniaal langs de bak voor **verspringen en hinkstapspringen** — ideaal voo
 
 ![Recent Results (PolyField) — de laatste drie voltooide veldprestaties](assets/recent-results.png)
 
+## Werpweergave {#throws-display}
+
+**Werpen** toont een wedstrijd kogelstoten, discuswerpen, kogelslingeren of speerwerpen uit PolyField Server, met elke landing in de sector en afstandsbogen. Net als de andere veldborden volgt het standaard het lopende onderdeel.
+
+- De worpen van de huidige atleet, genummerd per ronde; de landingen van de anderen als heatmap; de beste prestatie van de wedstrijd als gouden ster.
+- De laatste worp verschijnt zodra hij gemeten is. Neemt hij de leiding, dan komt eerst een banier **NIEUWE BESTE** voorbij.
+- Atleet, club, ronde, prestatie, positie, beste en *nodig om te leiden* zijn losse tekstdelen die u vrij plaatst.
+- **Klein ledpaneel** maakt markeringen groter en laat fijne details weg voor ledwanden met lage resolutie. De sector staat in een vak dat u zelf instelt en raakt de tekst nooit.
+- Vereist de versie van PolyField Server die gedraaide landingscoördinaten stuurt.
+
 ## Weergaven voor verticale sprongen {#vertical-jump-displays}
 
-**Vertical Jumps (PolyField)** toont een **hoogspring- of polsstokhoogspringwedstrijd**, gekoppeld aan één onderdeel (alleen *Vertical Jumps*-onderdelen verschijnen in het menu **Onderdeel**). Het staat in de paletgroep **PolyField Server** en heeft twee stijlen.
+**Vertical Jumps** toont een wedstrijd **hoogspringen of polsstokhoogspringen**. Net als de andere veldborden volgt het standaard het lopende onderdeel; vink onderdelen aan om een bord aan zijn zone te koppelen. Het staat in de groep **PolyField Server** en heeft twee stijlen.
 
 ### Geavanceerd — kwalificatiebord
 
@@ -239,14 +276,14 @@ Open `<IP-ADRES>:3000/athlete`. Een atleet zoekt op naam of startnummer; op een 
 
 ## FinishLynx- & TimeTronics-instellingen {#finishlynx-setup}
 
-- **Scoreboard-scripts** — gebruik de meegeleverde scripts `polyfield.lss`, `polyfield-wind.lss` en `polyfield-backup.lss` zodat FinishLynx de lopende klok, de wind, startlijsten en resultaten naar PolyField Track stuurt. Zie **[Scoreboard-instellingen](#scoreboard-setup)** hieronder voor het configureren van elke uitvoer.
+- **Scoreboard-scripts** — gebruik de meegeleverde scripts `polyfield.lss`, `polyfield-wind.lss` en `polyfield-backup.lss` zodat FinishLynx de lopende klok, de wind, startlijsten en resultaten naar PolyField & Track Display stuurt. Zie **[Scoreboard-instellingen](#scoreboard-setup)** hieronder voor het configureren van elke uitvoer.
 - **Records** — markeer het record van een atleet in het veld **User 3** van FinishLynx (bijv. `PB` of `W50 WR`). Recordcodes worden uitgebreid tot volledige titels op basis van de clublijst.
 - **Lijnweergave** — exporteer uw foto-finishafbeeldingen (JPG) naar de bewaakte resultatenmap; de knop Lijnweergave wordt actief zodra ze verschijnen.
 - **Resultaten** — sla uw LIF normaal op; PolyField toont alleen opgeslagen resultaten.
 
 ### Scoreboard-instellingen (FinishLynx) {#scoreboard-setup}
 
-PolyField Track ontvangt de lopende klok, startlijsten, live resultaten en wind via één UDP-stroom op **poort 5001**. FinishLynx verstuurt deze via zijn **Scoreboard**-uitvoeren (**Options → Scoreboard**). Stel de onderstaande uitvoeren in — elk is een **Netwerk (UDP)**-scoreboard gericht op de computer waarop PolyField Track draait.
+PolyField & Track Display ontvangt de lopende klok, startlijsten, live resultaten en wind via één UDP-stroom op **poort 5001**. FinishLynx verstuurt deze via zijn **Scoreboard**-uitvoeren (**Options → Scoreboard**). Stel de onderstaande uitvoeren in — elk is een **Netwerk (UDP)**-scoreboard gericht op de computer waarop PolyField & Track Display draait.
 
 **Instellingen die voor elke uitvoer gelden:**
 
@@ -254,7 +291,7 @@ PolyField Track ontvangt de lopende klok, startlijsten, live resultaten en wind 
 |---|---|
 | Serial Port | Network (UDP) |
 | Port | `5001` |
-| IP Address | het IP-adres van de computer waarop PolyField Track draait |
+| IP Address | het IP-adres van de computer waarop PolyField & Track Display draait |
 | Code Set | Single Byte |
 | Results | Auto · Paging aan |
 
@@ -262,13 +299,13 @@ PolyField Track ontvangt de lopende klok, startlijsten, live resultaten en wind 
 
 De primaire stroom: lopende klok, startlijsten en live resultaten.
 
-![FinishLynx-scoreboardinstellingen voor de hoofduitvoer van PolyField Track](assets/scoreboard-main.png)
+![FinishLynx-scoreboardinstellingen voor de hoofduitvoer van PolyField & Track Display](assets/scoreboard-main.png)
 
-- **Script:** `polyfield.lss` · **Name:** PolyField Track
+- **Script:** `polyfield.lss` · **Name:** PolyField & Track Display
 - **Running Time:** Normal
 - **Running Time → Options:** *Send results if armed* ✓
 - **Auto Break:** *Finish* ✓ (met *if capturing* ✓)
-- **Results → Options:** *Always send place* ✓ · *Include first name* ✓ · *Track live results* ✓ (laat *Affiliation abbreviation* uit — PolyField Track breidt clubnamen uit via zijn eigen clublijst)
+- **Results → Options:** *Always send place* ✓ · *Include first name* ✓ · *Track live results* ✓ (laat *Affiliation abbreviation* uit — PolyField & Track Display breidt clubnamen uit via zijn eigen clublijst)
 
 #### 2. Winduitvoer — `polyfield-wind.lss`
 
@@ -276,27 +313,40 @@ Een aparte uitvoer voor windmetingen.
 
 ![FinishLynx-scoreboardinstellingen voor de winduitvoer](assets/scoreboard-wind.png)
 
-- **Script:** `polyfield-wind.lss` · **Name:** PolyField Track Wind
-- **Running Time:** **Raw** — de wind vuurt bij elke celonderbreking; de Raw-modus geeft elke meting ongewijzigd door (PolyField Track negeert de «no data»-waarden)
+- **Script:** `polyfield-wind.lss` · **Name:** PolyField & Track Display Wind
+- **Running Time:** **Raw** — de wind vuurt bij elke celonderbreking; de Raw-modus geeft elke meting ongewijzigd door (PolyField & Track Display negeert de «no data»-waarden)
 - **Running Time → Options:** *Send results if armed* uit
 - **Results → Options:** *Always send place* ✓ · *Include first name* ✓ · *Affiliation abbreviation* ✓ · *Track live results* ✓
 
 #### 3. Back-upuitvoer — `polyfield-backup.lss` (aanbevolen)
 
-Een tweede, onafhankelijke kopie van de **startlijst** voor betrouwbaarheid. FinishLynx verstuurt elke startlijst maar één keer wanneer het onderdeel wordt geladen, dus één verloren UDP-pakket kan een scherm leeg laten. Deze back-upuitvoer verstuurt een identieke startlijst vanaf een apart scoreboard: als één pakket verloren gaat, komt het andere alsnog aan. Richt deze op **dezelfde** PolyField Track-computer.
+Een tweede, onafhankelijke kopie van de **startlijst** voor betrouwbaarheid. FinishLynx verstuurt elke startlijst maar één keer wanneer het onderdeel wordt geladen, dus één verloren UDP-pakket kan een scherm leeg laten. Deze back-upuitvoer verstuurt een identieke startlijst vanaf een apart scoreboard: als één pakket verloren gaat, komt het andere alsnog aan. Richt deze op **dezelfde** PolyField & Track Display-computer.
 
 ![FinishLynx-scoreboardinstellingen voor de back-upuitvoer van de startlijst](assets/scoreboard-backup.png)
 
-- **Script:** `polyfield-backup.lss` · **Name:** PolyField Track Backup
+- **Script:** `polyfield-backup.lss` · **Name:** PolyField & Track Display Backup
 - **Running Time:** Normal
 - **Running Time → Options:** *Send results if armed* ✓
 - **Results → Options:** *Always send place* ✓ · *Include first name* ✓ · *Track live results* ✓
 
-> Alle drie de uitvoeren kunnen tegelijk draaien en naar hetzelfde IP en dezelfde poort sturen — PolyField Track onderscheidt ze op inhoud.
+> Alle drie de uitvoeren kunnen tegelijk draaien en naar hetzelfde IP en dezelfde poort sturen — PolyField & Track Display onderscheidt ze op inhoud.
+
+## Uitzenden met OBS {#webcasting}
+
+Gebruik PolyField & Track Display als doorzichtige grafische laag over een videostream in OBS.
+
+1. Maak een lay-out voor de stream — het sjabloon **Webcast-onderbalk** is een goed begin. Houd widgets aan de randen van het beeld.
+2. Voeg in OBS een **Browser**-bron toe, 1920 × 1080, met het adres `http://<adres>:3000/display/<nummer>?transparent=1`.
+3. Vink in de lay-outbouwer dat scherm aan onder **Tonen op schermen** bij uw streamlay-out.
+
+Alles wat geen widget is, is doorzichtig, en widgets zonder gegevens blijven verborgen. Vink **Overgang tussen uitslagen** uit op de streamlay-out, zodat de overgang de camera niet bedekt.
+
+> **Streamen zonder de data van het uitslagennetwerk** — draait uw uitslagennetwerk op een 4G-simkaart, verbind de OBS-computer dan met beide netwerken en geef de netwerkadapter van het uitslagennetwerk geen standaardgateway. De stream gaat dan via de andere verbinding.
 
 ## Netwerk
 
-- De toepassing draait op **poort 3000** en kondigt zichzelf aan als `track.local` op het netwerk, zodat weergaven `http://track.local:3000` kunnen gebruiken zonder het IP te kennen.
+- De app draait op **poort 3000** en meldt zich als `display.local`, zodat schermen `http://display.local:3000` kunnen gebruiken zonder het IP te kennen. Schermen die met het oude `track.local` zijn ingesteld blijven werken.
+- Stel het adres van **PolyField Server** één keer in het hoofdvenster in; alle veldwidgets gebruiken het.
 - Kies op computers met meer dan één netwerkkaart (gebruikelijk op Windows) de juiste netwerkadapter in het verbindingspaneel, zodat het juiste adres wordt aangekondigd.
 - Alle apparaten moeten op hetzelfde netwerk zitten als de hostcomputer.
 
@@ -305,11 +355,11 @@ Een tweede, onafhankelijke kopie van de **startlijst** voor betrouwbaarheid. Fin
 | Symptoom | Controleren |
 |---|---|
 | De knop Lijnweergave is grijs | Nog geen foto-finish-JPG's in de bewaakte map — controleer het exportpad voor afbeeldingen in FinishLynx. |
-| Records toont niets | De atleet moet gemarkeerd zijn in FinishLynx User 3 of via handmatige selectie, en de lay-out moet een Record-overlaywidget bevatten. |
+| Er verschijnt geen momentkaart | De lay-out moet momenten aan hebben staan. Met **Alleen finales** moet de onderdeelnaam „Final" bevatten. Elke race speelt één keer per scherm, dus hetzelfde bestand opnieuw opslaan speelt hem niet opnieuw af. |
 | Een weergave toont «wachten op lay-out» | Wijs een lay-out toe aan dat scherm in het paneel Schermen. |
 | Een oud resultaat verscheen opnieuw | Een bestand openen in FinishLynx promoot het niet meer; alleen een echte wijziging doet dat. Gebruik LIF bladeren om eerdere resultaten bewust opnieuw te tonen. |
 | Weergaven kunnen geen verbinding maken | Bevestig hetzelfde netwerk, poort 3000 bereikbaar en (pc's met meerdere kaarten) de juiste netwerkadapter geselecteerd. |
 
 ## Downloaden & ondersteuning
 
-Download de nieuwste versie op [www.polyfield.co.uk](https://www.polyfield.co.uk) of via de [releases-pagina](https://github.com/KingstonPolyAC/PolyField-Track/releases). Ondersteuning: [support@polyfield.co.uk](mailto:support@polyfield.co.uk).
+Download de nieuwste versie op [www.polyfield.co.uk](https://www.polyfield.co.uk) of via de [releases-pagina](https://github.com/KingstonPolyAC/PolyField-and-Track-Display/releases). Ondersteuning: [support@polyfield.co.uk](mailto:support@polyfield.co.uk).

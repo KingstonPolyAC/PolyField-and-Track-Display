@@ -1,11 +1,11 @@
 ---
-title: PolyField Track — Manual
-description: Ayuda y manual de usuario de PolyField Track — software de visualización y presentación de resultados para los sistemas de foto-finish FinishLynx y TimeTronics.
+title: PolyField & Track Display — Manual
+description: Ayuda y manual de usuario de PolyField & Track Display — software de visualización y presentación de resultados para los sistemas de foto-finish FinishLynx y TimeTronics.
 lang: es
 permalink: /es/
 ---
 
-# PolyField Track
+# PolyField & Track Display
 
 Un software de visualización y presentación de resultados para los sistemas de foto-finish FinishLynx y TimeTronics. Funciona en Windows y Mac como una aplicación de escritorio vinculada a su carpeta de resultados de foto-finish.
 
@@ -16,7 +16,7 @@ Un software de visualización y presentación de resultados para los sistemas de
 
 ## Descripción general
 
-PolyField Track convierte sus resultados de FinishLynx o TimeTronics en pantallas en directo por todo su recinto. Una sola instancia de escritorio vigila su carpeta de resultados y sirve una interfaz web que cualquier dispositivo de la red puede abrir — marcadores, un quiosco de autoservicio para atletas, un panel de velocidades y mucho más.
+PolyField & Track Display convierte sus resultados de FinishLynx o TimeTronics en pantallas en directo por todo su recinto. Una sola instancia de escritorio vigila su carpeta de resultados y sirve una interfaz web que cualquier dispositivo de la red puede abrir — marcadores, un quiosco de autoservicio para atletas, un panel de velocidades y mucho más.
 
 El software mantiene al **operador al mando**: los resultados solo aparecen una vez guardados, garantizando una validación positiva antes de mostrarlos. Se admiten guardados múltiples — así puede mostrar pronto a los atletas de fondo, o revelar una carrera una vez asignadas las marcas de los tres primeros.
 
@@ -35,7 +35,7 @@ Es la carpeta donde FinishLynx o TimeTronics guarda los resultados (LIF, etc.). 
 
 ![Defina la carpeta de resultados o modifique la ruta en la esquina superior derecha:]({{ '/assets/desktop.png' | relative_url }})
 
-Una vez definida, la interfaz web se crea y la dirección de acceso se muestra en la parte superior de la aplicación de escritorio (p. ej. `http://track.local:3000` o `http://<su-IP>:3000`).
+Una vez definida, la interfaz web se crea y la dirección de acceso se muestra en la parte superior de la aplicación de escritorio (p. ej. `http://display.local:3000` o `http://<su-IP>:3000`).
 
 ### 2. Abrir una pantalla
 
@@ -53,10 +53,10 @@ El panel de control es el puesto del operador. En la parte superior se define la
 | **Salvapantallas** | Mostrar una **imagen** vinculada o un **diseño guardado** en el área del salvapantallas. Si ya hay una fuente definida, una pulsación lo activa/desactiva; el botón ⚙ vuelve a abrir las opciones. |
 | **Vista de línea** | Enviar la última imagen de foto-finish a las pantallas. Atenuado hasta que aparezcan imágenes JPG de foto-finish en la carpeta de resultados. |
 | **Reloj** | Mostrar el reloj en marcha a pantalla completa en las pantallas con un widget de reloj. |
-| **Récords** | Mostrar tarjetas de celebración para los atletas marcados con un récord. Ant. / Sig. recorren los atletas marcados o la selección manual. |
+| **Probar / Podio / Selección manual** | Aparecen cuando un diseño usa momentos: reproducir una tarjeta de ejemplo en todas las pantallas, mostrar el podio del resultado actual o enviar un récord elegido. Véase [Momentos](#moments). |
 | **Cuenta atrás** | Cuenta atrás hasta una hora objetivo. Introduzca la hora e Iniciar; se oculta a cero. |
 | **Constructor de diseños** | Abrir el diseñador de diseños (véase más abajo). |
-| **Explorar LIF** | Volver a mostrar cualquier resultado anterior de la carpeta supervisada. |
+| **Explorar LIF** | Volver a mostrar cualquier resultado anterior de la carpeta supervisada. Su primera opción, **En blanco**, borra el resultado de todas las pantallas. |
 
 ## Superposiciones
 
@@ -76,10 +76,9 @@ Cuenta atrás hasta una **hora objetivo**, leída del reloj propio de cada panta
 
 ### Récords
 
-Marque el récord de un atleta en FinishLynx (véase [configuración](#finishlynx-setup)), luego pulse **Récords** para mostrar una tarjeta de celebración — atleta, categoría, prueba, club y marca. Ant. / Sig. recorren varios atletas marcados.
-También es posible la selección manual de un atleta desde un archivo LIF existente y marcarlo como récord. Pulse **Récords** y luego **Selección manual** para iniciar el proceso de 3 pasos. 1. Elegir la carrera. 2. Elegir la marca. 3. Elegir o introducir el tipo de récord.
+Los récords ahora se muestran como [momentos](#moments). Marque el récord de un atleta en el campo User 3 de FinishLynx (p. ej. `PB` o `W50 WR`) y cada pantalla que usa momentos mostrará una tarjeta de récord al guardarse el resultado. Para un récord que FinishLynx no marcó, pulse **Selección manual** en la ventana principal: 1. elija la carrera, 2. elija la marca, 3. elija o escriba el tipo de récord.
 
-![Selección manual de récords:]({{ '/assets/records.png' | relative_url }})
+![Selección manual de récords:](assets/records.png)
 
 ### Vista de línea
 
@@ -103,22 +102,52 @@ La velocidad de rotación de atletas por defecto es de **5 segundos**.
 
 **Explorar LIF** lista los resultados anteriores de la carpeta supervisada para volver a mostrar cualquiera de ellos — útil para sesiones fotográficas o para volver a mostrar una serie anterior. Abrir un archivo antiguo en FinishLynx *no* altera la pantalla en directo; solo un cambio real de un resultado lo promueve.
 
+**En blanco**, al principio de la lista, borra el resultado de todas las pantallas y vuelve a *Esperando resultados*. El siguiente resultado guardado se muestra con normalidad.
+
 ## Conexión de pantallas {#connecting-screens}
 
 Abra `http://<dirección>:3000/display` en cada pantalla; se le asigna un número automáticamente. La página **Códigos QR de pantallas** (desde el panel Pantallas, o `/screens-overview`) muestra un código escaneable para cada página de pantalla, para dirigir rápidamente un teléfono, una tableta o el navegador de un televisor a la página correcta.
 
 En el panel **Pantallas** asigna un diseño guardado a cada pantalla de forma independiente y elimina las pantallas que ya no están activas. El escritorio también tiene una vista previa de marcador integrada que refleja una pantalla real cuando le asigna un diseño.
 
+Las pantallas se recargan solas cuando la aplicación se reinicia y conservan su número y su diseño. Para comprobar un diseño en las pantallas reales, use **Vista previa → En las pantallas** en el Constructor de diseños.
+
 ## El Constructor de diseños
 
-Abra el Constructor de diseños para diseñar marcadores personalizados a partir de widgets. Cada diseño tiene una relación de aspecto y un tema, y se construye soltando widgets en una cuadrícula y colocándolos.
+Abra el Constructor de diseños para crear diseños a partir de widgets. Cada diseño tiene una forma de lienzo y un tema.
 
-- **Añada widgets** desde la paleta de la izquierda, agrupados por Prueba actual, Resultados, Superposiciones e Información.
-- **Seleccione un widget** para editar sus **Propiedades** a la derecha — posición y tamaño, columnas, tamaño del texto, fuente, colores y opciones propias del widget.
-- **Widgets superpuestos:** use el navegador **◀ Widgets ▶** en la parte superior del panel Propiedades para recorrer la selección de cada widget, incluidos los ocultos tras otros.
-- **Asigne** un diseño a una pantalla (o a la vista previa del marcador) desde el panel Pantallas.
+- **Empiece** con una plantilla, o arrastre widgets de la lista de la izquierda al lienzo.
+- **Seleccione un widget** para editarlo en el panel **Widget** de la derecha. Lo esencial va primero; el resto está en **Más ajustes**. El panel **Lienzo** reúne los ajustes del diseño: nombre, tema, forma, **Mostrar en pantallas** y **Momentos**.
+- **El texto de un widget** se arrastra directamente en el lienzo con el widget seleccionado. Los elementos se alinean entre sí y pueden alinearse a la izquierda, al centro o a la derecha.
+- **Deshaga** con ⌘/Ctrl+Z y pulse **?** para ver todos los atajos. Los paneles laterales se pliegan para dar más espacio al lienzo.
+- **Mostrar en pantallas** — marque las pantallas donde debe aparecer el diseño.
+- **Vista previa** — **En el navegador** muestra el diseño aquí con datos de ejemplo o en directo. **En las pantallas** lo muestra en todas las pantallas conectadas hasta que lo detenga; después cada pantalla vuelve a su diseño.
 
 ![El Constructor de diseños — la paleta de widgets a la izquierda, el lienzo del diseño en el centro y el panel de propiedades (con el navegador de widgets) a la derecha]({{ '/assets/Layout-Builder.png' | relative_url }})
+
+## Momentos {#moments}
+
+Los momentos son tarjetas breves que se muestran en las pantallas al guardarse un resultado. Actívelos por diseño: **Lienzo → Momentos → Usar momentos en este diseño**.
+
+- **Tras una carrera, mostrar** — el **Ganador** (con la diferencia) o el **Podio**. En carreras para, el podio se ordena por puntuación RAZA.
+- **Foto-finish en llegadas ajustadas** — se muestra primero cuando los dos primeros están a menos de 0,05 s (ajustable), con la imagen de llegada si FinishLynx guardó una para esa carrera.
+- **Récords del resultado** — cada atleta marcado en el campo User 3 de FinishLynx tiene su tarjeta. El récord del ganador va en su propia tarjeta.
+- **Solo finales** — activado por defecto: las tarjetas solo se muestran en pruebas cuyo nombre contiene «Final». Los récords se muestran en cualquier ronda.
+- **Mostrar sobre** — toda la pantalla, o un solo widget.
+
+Cada tarjeta se muestra una sola vez por carrera, al guardarse el resultado — nunca al recargar una página ni al volver a mostrar un resultado antiguo. En la ventana principal, **Probar** reproduce una tarjeta de ejemplo en todas las pantallas que usan momentos, y **Podio** muestra los tres primeros del resultado actual, para ceremonias.
+
+### Cortinilla entre resultados
+
+Cuando llega el resultado de otra prueba, primero pasa una cortinilla de 2 segundos con el logo de PolyField y después los resultados entran fila a fila. Está activa en todos los diseños. Elija **La cortinilla muestra** para usar uno de sus diseños (un panel de patrocinadores, por ejemplo), o desmarque **Cortinilla entre resultados**.
+
+## Resultados en pantalla
+
+- **Entrada fila a fila** — un resultado nuevo entra fila a fila, ganador primero. Un resultado corregido desliza las filas a su nuevo puesto. Desmarque **Animar las filas cuando llegan o cambian los resultados** en el widget para desactivarlo.
+- **Texto que cabe** — los nombres y títulos largos se reducen en lugar de cortarse.
+- **Carreras para** — cuando el archivo de la prueba da a los atletas una clase WPA, la tabla añade las columnas **Clase** y **RAZA**, manteniendo el orden de llegada.
+- **Sin nombres** — algunas carreras solo tienen dorsales; las filas y tarjetas muestran entonces el dorsal.
+- **Temas** — resultados, tableros de concursos y relojes siguen el tema del diseño.
 
 ## Referencia de widgets
 
@@ -130,10 +159,8 @@ Abra el Constructor de diseños para diseñar marcadores personalizados a partir
 | Reloj en marcha / Tiempo detenido | Reloj en directo o congelado. |
 | Nombre de prueba / Viento | Nombre y viento de la prueba actual o del resultado. |
 | Texto personalizado / Logo / Hora del día | Texto estático, una imagen/logo, o la hora. |
-| Resultados RAZA | Puntos WPA de para-atletismo. |
-| Concursos PolyField (Field Results / Recent Results / Jump Ruler / Vertical Jumps) | Pantallas en directo de concursos, alimentadas por el servidor PolyField Field — agrupadas en **PolyField Server** en la paleta. Véase [Pantallas de saltos horizontales](#horizontal-jump-displays) y [Pantallas de saltos verticales](#vertical-jump-displays) más abajo. |
+| Concursos PolyField (Field Results / Recent Results / Lanzamientos / Jump Ruler / Vertical Jumps) | Pantallas de concursos en directo alimentadas por PolyField Server, agrupadas en **PolyField Server**. Véase [Lanzamientos](#throws-display), [Saltos horizontales](#horizontal-jump-displays) y [Saltos verticales](#vertical-jump-displays). |
 | Superposiciones Texto / Salvapantallas / Vista de línea / Reloj | El banner de texto, la imagen/diseño del salvapantallas, la foto-finish y el reloj a pantalla completa (se muestran cuando el operador activa la superposición correspondiente). |
-| Superposición de Récord | Tarjetas de celebración de récords (elementos posicionables por arrastre, tamaño por elemento). |
 | Superposición de Cuenta atrás | Cuenta atrás hasta una hora objetivo con un rótulo editable. |
 
 ## Puntos de pruebas combinadas
@@ -151,7 +178,7 @@ El tiempo usado para la búsqueda es el valor mostrado (ya redondeado a la preci
 
 ## Pantallas de saltos horizontales {#horizontal-jump-displays}
 
-Estos widgets muestran en directo datos de concursos desde un **servidor PolyField Field** en la misma red. Añádalos desde el grupo **PolyField Server** del Constructor de diseños; cada uno tiene una **dirección IP** y un **puerto** para el servidor (por defecto `192.168.0.90:8080`).
+Estos widgets muestran datos de concursos en directo de **PolyField Server** en la misma red. Añádalos desde el grupo **PolyField Server** del Constructor de diseños. Configure la dirección del servidor una sola vez en la ventana principal, en **PolyField Server**; todos los widgets de concursos la usan.
 
 ### Jump Ruler (PolyField)
 
@@ -159,7 +186,7 @@ Una regla junto al foso para **salto de longitud y triple salto** — ideal para
 
 ![El Jump Ruler en el Constructor de diseños — la escala anclada al foso con el saltador actual, el saltador anterior, las chinchetas del top 3 y la media de la competición](assets/jump-ruler.png)
 
-- **Asócielo a una prueba.** Elija la prueba en el menú **Prueba** (solo se listan las pruebas de *saltos horizontales*). Pueden funcionar varias reglas a la vez para distintas pruebas, cada una asociada por separado.
+- **Sigue la prueba en curso.** Por defecto, la regla muestra la prueba de saltos horizontales en curso y pasa sola a la siguiente. Para reglas en zonas distintas, marque las pruebas de cada una. Las reglas nuevas colocan su texto en una banda sobre los marcadores.
 - **Tabla de batida.** La escala está anclada al foso: introduzca el **inicio de la regla** para salto de longitud y para cada tabla del triple salto (**7 / 9 / 11 / 13 m**, con 2 decimales, p. ej. `11.02`). La tabla activa del atleta (del flujo) determina el inicio usado, para que las marcas caigan siempre en el lugar correcto.
 - **Chinchetas del top 3.** Las tres mejores marcas se muestran como chinchetas de alturas decrecientes (1.ª la más alta, luego 2.ª y 3.ª), con la 1.ª siempre delante. Una marca fuera del rango visible aparece como **flecha** en el borde apuntando en su dirección.
 - **Chincheta de media.** Una chincheta **Avg** opcional traza la media de la competición.
@@ -177,9 +204,19 @@ Una regla junto al foso para **salto de longitud y triple salto** — ideal para
 
 ![Recent Results (PolyField) — las tres últimas marcas de concursos](assets/recent-results.png)
 
+## Pantalla de lanzamientos {#throws-display}
+
+**Lanzamientos** muestra un concurso de peso, disco, martillo o jabalina desde PolyField Server, con cada caída marcada en el sector y arcos de distancia. Como los demás tableros de concursos, sigue por defecto la prueba en curso.
+
+- Los lanzamientos del atleta actual, numerados por ronda; las caídas de los demás como mapa de calor; la mejor marca del concurso como estrella dorada.
+- El último lanzamiento aparece en cuanto se mide. Si toma el liderato, primero pasa un rótulo **NUEVA MEJOR MARCA**.
+- Atleta, club, ronda, marca, posición, mejor marca y *marca para liderar* son textos que se colocan libremente.
+- **Panel LED pequeño** agranda los marcadores y quita el detalle fino para pantallas LED de baja resolución. El sector ocupa una zona que usted dimensiona, sin tocar nunca el texto.
+- Necesita la versión de PolyField Server que envía las coordenadas de caída rotadas.
+
 ## Pantallas de saltos verticales {#vertical-jump-displays}
 
-**Vertical Jumps (PolyField)** muestra un concurso de **salto de altura o salto con pértiga**, vinculado a una prueba (solo las pruebas *Vertical Jumps* aparecen en su menú **Prueba**). Está en el grupo **PolyField Server** de la paleta y tiene dos estilos.
+**Vertical Jumps** muestra un concurso de **salto de altura o con pértiga**. Como los demás tableros de concursos, sigue por defecto la prueba en curso; marque pruebas para vincular un tablero a su zona. Está en el grupo **PolyField Server** y tiene dos estilos.
 
 ### Avanzado — tablero de clasificación
 
@@ -239,14 +276,14 @@ Abra `<DIRECCIÓN-IP>:3000/athlete`. Un atleta busca por nombre o número de dor
 
 ## Configuración de FinishLynx y TimeTronics {#finishlynx-setup}
 
-- **Scripts de marcador** — use los scripts suministrados `polyfield.lss`, `polyfield-wind.lss` y `polyfield-backup.lss` para que FinishLynx envíe el reloj en marcha, el viento, las listas de salida y los resultados a PolyField Track. Consulte **[Configuración de los marcadores](#scoreboard-setup)** más abajo para configurar cada salida.
+- **Scripts de marcador** — use los scripts suministrados `polyfield.lss`, `polyfield-wind.lss` y `polyfield-backup.lss` para que FinishLynx envíe el reloj en marcha, el viento, las listas de salida y los resultados a PolyField & Track Display. Consulte **[Configuración de los marcadores](#scoreboard-setup)** más abajo para configurar cada salida.
 - **Récords** — marque el récord de un atleta en el campo **User 3** de FinishLynx (p. ej. `PB` o `W50 WR`). Los códigos de récord se amplían a títulos completos a partir de la lista de clubes.
 - **Vista de línea** — exporte sus imágenes de foto-finish (JPG) a la carpeta de resultados supervisada; el botón Vista de línea se activa en cuanto aparecen.
 - **Resultados** — guarde su LIF con normalidad; PolyField solo muestra los resultados guardados.
 
 ### Configuración de los marcadores (FinishLynx) {#scoreboard-setup}
 
-PolyField Track recibe el reloj en marcha, las listas de salida, los resultados en directo y el viento por una única transmisión UDP en el **puerto 5001**. FinishLynx los envía a través de sus salidas de **Scoreboard** (**Options → Scoreboard**). Configure las salidas siguientes — cada una es un marcador de **Red (UDP)** dirigido al ordenador que ejecuta PolyField Track.
+PolyField & Track Display recibe el reloj en marcha, las listas de salida, los resultados en directo y el viento por una única transmisión UDP en el **puerto 5001**. FinishLynx los envía a través de sus salidas de **Scoreboard** (**Options → Scoreboard**). Configure las salidas siguientes — cada una es un marcador de **Red (UDP)** dirigido al ordenador que ejecuta PolyField & Track Display.
 
 **Ajustes comunes a todas las salidas:**
 
@@ -254,7 +291,7 @@ PolyField Track recibe el reloj en marcha, las listas de salida, los resultados 
 |---|---|
 | Serial Port | Network (UDP) |
 | Port | `5001` |
-| IP Address | la IP del ordenador que ejecuta PolyField Track |
+| IP Address | la IP del ordenador que ejecuta PolyField & Track Display |
 | Code Set | Single Byte |
 | Results | Auto · Paging activado |
 
@@ -262,13 +299,13 @@ PolyField Track recibe el reloj en marcha, las listas de salida, los resultados 
 
 La transmisión principal: reloj en marcha, listas de salida y resultados en directo.
 
-![Ajustes del marcador de FinishLynx para la salida principal de PolyField Track](assets/scoreboard-main.png)
+![Ajustes del marcador de FinishLynx para la salida principal de PolyField & Track Display](assets/scoreboard-main.png)
 
-- **Script:** `polyfield.lss` · **Name:** PolyField Track
+- **Script:** `polyfield.lss` · **Name:** PolyField & Track Display
 - **Running Time:** Normal
 - **Running Time → Options:** *Send results if armed* ✓
 - **Auto Break:** *Finish* ✓ (con *if capturing* ✓)
-- **Results → Options:** *Always send place* ✓ · *Include first name* ✓ · *Track live results* ✓ (deje *Affiliation abbreviation* desactivado — PolyField Track expande los nombres de los clubes desde su propia lista de clubes)
+- **Results → Options:** *Always send place* ✓ · *Include first name* ✓ · *Track live results* ✓ (deje *Affiliation abbreviation* desactivado — PolyField & Track Display expande los nombres de los clubes desde su propia lista de clubes)
 
 #### 2. Salida de viento — `polyfield-wind.lss`
 
@@ -276,27 +313,40 @@ Una salida dedicada a las lecturas de viento.
 
 ![Ajustes del marcador de FinishLynx para la salida de viento](assets/scoreboard-wind.png)
 
-- **Script:** `polyfield-wind.lss` · **Name:** PolyField Track Wind
-- **Running Time:** **Raw** — el viento se dispara en cada corte de célula; el modo Raw transmite cada lectura tal cual (PolyField Track ignora los valores «no data»)
+- **Script:** `polyfield-wind.lss` · **Name:** PolyField & Track Display Wind
+- **Running Time:** **Raw** — el viento se dispara en cada corte de célula; el modo Raw transmite cada lectura tal cual (PolyField & Track Display ignora los valores «no data»)
 - **Running Time → Options:** *Send results if armed* desactivado
 - **Results → Options:** *Always send place* ✓ · *Include first name* ✓ · *Affiliation abbreviation* ✓ · *Track live results* ✓
 
 #### 3. Salida de respaldo — `polyfield-backup.lss` (recomendado)
 
-Una segunda copia independiente de la **lista de salida** para mayor fiabilidad. FinishLynx envía cada lista de salida solo una vez al cargar la prueba, por lo que un único paquete UDP perdido puede dejar una pantalla en blanco. Esta salida de respaldo envía una lista de salida idéntica desde un marcador distinto: si se pierde un paquete, el otro llega igualmente. Diríjala al **mismo** ordenador PolyField Track.
+Una segunda copia independiente de la **lista de salida** para mayor fiabilidad. FinishLynx envía cada lista de salida solo una vez al cargar la prueba, por lo que un único paquete UDP perdido puede dejar una pantalla en blanco. Esta salida de respaldo envía una lista de salida idéntica desde un marcador distinto: si se pierde un paquete, el otro llega igualmente. Diríjala al **mismo** ordenador PolyField & Track Display.
 
 ![Ajustes del marcador de FinishLynx para la salida de respaldo de la lista de salida](assets/scoreboard-backup.png)
 
-- **Script:** `polyfield-backup.lss` · **Name:** PolyField Track Backup
+- **Script:** `polyfield-backup.lss` · **Name:** PolyField & Track Display Backup
 - **Running Time:** Normal
 - **Running Time → Options:** *Send results if armed* ✓
 - **Results → Options:** *Always send place* ✓ · *Include first name* ✓ · *Track live results* ✓
 
-> Las tres salidas pueden funcionar a la vez y enviar a la misma IP y puerto — PolyField Track las distingue por su contenido.
+> Las tres salidas pueden funcionar a la vez y enviar a la misma IP y puerto — PolyField & Track Display las distingue por su contenido.
+
+## Retransmisión con OBS {#webcasting}
+
+Use PolyField & Track Display como capa gráfica transparente sobre una emisión de vídeo en OBS.
+
+1. Cree un diseño para la emisión — la plantilla **Rótulo para retransmisión** es un buen punto de partida. Mantenga los widgets en los bordes de la imagen.
+2. En OBS añada una fuente **Navegador**, 1920 × 1080, con la dirección `http://<dirección>:3000/display/<número>?transparent=1`.
+3. En el Constructor de diseños, marque esa pantalla en **Mostrar en pantallas** de su diseño de emisión.
+
+Todo lo que no es un widget es transparente, y los widgets aún sin datos permanecen ocultos. Desmarque **Cortinilla entre resultados** en el diseño de emisión para que la cortinilla no tape la cámara.
+
+> **Emitir sin usar los datos de la red de resultados** — si su red de resultados funciona con una SIM 4G, conecte el ordenador de OBS a ambas redes y no asigne puerta de enlace predeterminada al adaptador de la red de resultados. La emisión saldrá entonces por la otra conexión.
 
 ## Red
 
-- La aplicación se sirve en el **puerto 3000** y se anuncia como `track.local` en la red, de modo que las pantallas pueden usar `http://track.local:3000` sin conocer la IP.
+- La aplicación sirve en el **puerto 3000** y se anuncia como `display.local`, así que las pantallas pueden usar `http://display.local:3000` sin conocer la IP. Las pantallas configuradas con el antiguo `track.local` siguen funcionando.
+- Configure la dirección de **PolyField Server** una sola vez en la ventana principal; todos los widgets de concursos la usan.
 - En ordenadores con más de una tarjeta de red (habitual en Windows), elija el adaptador de red correcto en el panel de conexión para que se anuncie la dirección correcta.
 - Todos los dispositivos deben estar en la misma red que el ordenador anfitrión.
 
@@ -305,11 +355,11 @@ Una segunda copia independiente de la **lista de salida** para mayor fiabilidad.
 | Síntoma | Comprobar |
 |---|---|
 | El botón Vista de línea está atenuado | Aún no hay imágenes JPG de foto-finish en la carpeta supervisada — compruebe la ruta de exportación de imágenes de FinishLynx. |
-| Récords no muestra nada | El atleta debe estar marcado en FinishLynx User 3 o mediante selección manual, y el diseño debe contener un widget Superposición de Récord. |
+| No aparece ninguna tarjeta de momento | El diseño debe tener los momentos activados. Con **Solo finales**, el nombre de la prueba debe contener «Final». Cada carrera se muestra una vez por pantalla: guardar de nuevo el mismo archivo no la repite. |
 | Una pantalla muestra «esperando diseño» | Asigne un diseño a esa pantalla en el panel Pantallas. |
 | Reapareció un resultado antiguo | Abrir un archivo en FinishLynx ya no lo promueve; solo lo hace un cambio real. Use Explorar LIF para volver a mostrar resultados anteriores de forma intencionada. |
 | Las pantallas no se conectan | Confirme la misma red, el puerto 3000 accesible y (PC con varias tarjetas) el adaptador de red correcto seleccionado. |
 
 ## Descarga y soporte
 
-Descargue la última versión desde [www.polyfield.co.uk](https://www.polyfield.co.uk) o desde la [página de versiones](https://github.com/KingstonPolyAC/PolyField-Track/releases). Soporte: [support@polyfield.co.uk](mailto:support@polyfield.co.uk).
+Descargue la última versión desde [www.polyfield.co.uk](https://www.polyfield.co.uk) o desde la [página de versiones](https://github.com/KingstonPolyAC/PolyField-and-Track-Display/releases). Soporte: [support@polyfield.co.uk](mailto:support@polyfield.co.uk).

@@ -1,10 +1,10 @@
 ---
-title: PolyField Track — Manual
+title: PolyField & Track Display — Manual
 lang: en
 permalink: /
 ---
 
-# PolyField Track
+# PolyField & Track Display
 
 A results viewing and display software package for FinishLynx and TimeTronics photo-finish systems. Runs on Windows and Mac as a desktop device linked to your photo-finish results folder.
 
@@ -15,7 +15,7 @@ A results viewing and display software package for FinishLynx and TimeTronics ph
 
 ## Overview
 
-PolyField Track turns your FinishLynx or TimeTronics results into live displays across your venue. One desktop instance watches your results folder and serves a web interface that any device on the network can open — scoreboards, an athlete self-service kiosk, a speed board, and more.
+PolyField & Track Display turns your FinishLynx or TimeTronics results into live displays across your venue. One desktop instance watches your results folder and serves a web interface that any device on the network can open — scoreboards, an athlete self-service kiosk, a speed board, and more.
 
 It keeps the **operator in control**: results only appear once they are saved, ensuring positive validation before display. Multiple saves are supported — so you can show distance-race athletes early, or reveal a race once the top 3 have performances assigned.
 
@@ -34,7 +34,7 @@ This is the folder FinishLynx or TimeTronics saves results into (LIF, etc.). Cli
 
 ![Set the results folder or modify the path in the top right corner:](assets/desktop.png)
 
-Once set, the web interface builds and the access address is shown at the top of the desktop app (e.g. `http://track.local:3000` or `http://<your-IP>:3000`).
+Once set, the web interface builds and the access address is shown at the top of the desktop app (e.g. `http://display.local:3000` or `http://<your-IP>:3000`).
 
 ### 2. Open a display
 
@@ -52,10 +52,10 @@ The control panel is the operator's home. Along the top you set the results fold
 | **Screensaver** | Show a linked **image** or a chosen **saved layout** across the screensaver area. If a source is already set, one press toggles it on/off; the ⚙ button re-opens the options. |
 | **Line View** | Push the latest photo-finish image to the displays. Greyed out until photo-finish JPGs appear in the results folder. |
 | **Clock** | Show the running clock full-screen on screens with a clock widget. |
-| **Records** | Show celebratory record cards for athletes flagged with a record. Prev / Next step through the flagged athletes or manual selection. |
+| **Test moment / Podium / Manual Selection** | Shown once a layout uses Moments: play a sample card on every screen, show the current result's podium, or send a record you choose. See [Moments](#moments). |
 | **Countdown** | Count down to a target time of day. Enter the time and Start; it hides itself at zero. |
 | **Layout Builder** | Open the layout designer (see below). |
-| **Browse LIF** | Re-show any previous result from the monitored folder. |
+| **Browse LIF** | Re-show any previous result from the monitored folder. Its first option, **Blank**, clears the result from every screen. |
 
 ## Overlays
 
@@ -75,8 +75,7 @@ Counts down to a **target time of day**, read from each screen's own clock. Ente
 
 ### Records
 
-Flag an athlete's record in FinishLynx (see [setup](#finishlynx-setup)), then press **Records** to show a celebratory card — athlete, category, event, club and time. Prev / Next step through multiple flagged athletes.
-Manual selection of an athlete from an existing LIF file and flagging them as a Record is also possible. Press **Records** then **Manual Selection** to start the 3 step flow. 1. Choose the race. 2. Choose the Performance. 3. Choose or input the Record type. 
+Records now play as [Moments](#moments). Flag an athlete's record in FinishLynx User 3 (e.g. `PB` or `W50 WR`) and every screen using Moments shows a record card when the result is saved. For a record FinishLynx didn't flag, press **Manual Selection** in the main window: 1. choose the race, 2. choose the performance, 3. choose or enter the record type.
 
 ![Manual records selection:](assets/records.png)
 
@@ -102,22 +101,52 @@ The default athlete rotation speed is **5 seconds**.
 
 **Browse LIF** lists previous results from the monitored folder so you can re-show any of them — useful for photo opportunities or re-displaying an earlier heat. Opening an old file in FinishLynx does *not* disturb the live display; only a genuine change to a result promotes it.
 
+**Blank**, at the top of the list, clears the result from every screen back to *Awaiting Results*. The next saved result shows as normal.
+
 ## Connecting screens {#connecting-screens}
 
 Open `http://<address>:3000/display` on each screen; it auto-assigns a number. The **Screen QR Codes** page (from the Screens panel, or `/screens-overview`) shows a scannable code for every display page, so you can point a phone, tablet or TV browser at the right page quickly.
 
 In the **Screens** panel you assign a saved layout to each screen independently, and remove screens that are no longer live. The desktop also has a built-in scoreboard preview that mirrors a real screen when you assign it a layout.
 
+Screens reload themselves after the app restarts and keep their number and layout. To check a layout on the real screens, use **Preview → On displays** in the Layout Builder.
+
 ## The Layout Builder
 
-Open the Layout Builder to design custom scoreboard layouts from widgets. Each layout has an aspect ratio and a theme, and is built by dropping widgets onto a grid and positioning them.
+Open the Layout Builder to design layouts from widgets. Each layout has a canvas shape and a theme.
 
-- **Add widgets** from the palette on the left, grouped by Current Event, Results, Overlays and Information.
-- **Select a widget** to edit its **Properties** on the right — position & size, columns, text size, font, colours and per-widget options.
-- **Overlapping widgets:** use the **◀ Widgets ▶** navigator at the top of the Properties panel to cycle selection through every widget, including ones hidden behind others.
-- **Assign** a layout to a screen (or the scoreboard preview) from the Screens panel.
+- **Start** from a template, or drag widgets from the list on the left onto the canvas.
+- **Select a widget** to edit it in the **Widget** panel on the right. The essentials come first; the rest is under **More settings**. The **Canvas** panel holds the layout's own settings: name, theme, shape, **Show on screens** and **Moments**.
+- **Text inside a widget** can be dragged on the canvas once the widget is selected. Pieces snap into line and can be left, centre or right aligned.
+- **Undo** with ⌘/Ctrl+Z, and press **?** for every shortcut. The side panels fold away to give the canvas more room.
+- **Show on screens** — tick the screens a layout should appear on.
+- **Preview** — **In browser** shows the layout here with sample or live data. **On displays** shows it on every connected screen until you stop; each screen then returns to its own layout.
 
 ![The Layout Builder — widget palette on the left, the layout canvas in the middle, and the properties panel (with the widget navigator) on the right](assets/Layout-Builder.png)
+
+## Moments {#moments}
+
+Moments are short cards that play on the screens when a result is saved. Switch them on per layout: **Canvas → Moments → Use moments on this layout**.
+
+- **After a race, show** — the **Winner** (with the winning margin) or the **Podium**. For para races the podium is ranked by RAZA score.
+- **Photo finish for close races** — plays first when the top two are within 0.05 s (adjustable), with the finish image if FinishLynx saved one for that race.
+- **Records from the result** — every athlete flagged in FinishLynx User 3 gets a card. A winner's record goes on the winner's own card.
+- **Finals only** — on by default, so cards only play for events with "Final" in the name. Records play in any round.
+- **Play over** — the whole screen, or just one widget.
+
+A card plays once per race, as soon as the result is saved — never when a page reloads or when you re-show an old result. In the main window, **Test moment** plays a sample card on every screen using Moments, and **Podium** shows the current result's top three, for medal ceremonies.
+
+### Wipe between results
+
+When a different event's result comes up, a 2-second wipe with the PolyField logo plays first, and the results then cascade in. It's on for every layout. Choose **The wipe shows** to use one of your own layouts instead (a sponsor board, for example), or untick **Wipe between different results**.
+
+## Results on screen
+
+- **Cascade** — a new result comes in row by row, winner first. A corrected result glides rows into their new places. Untick **Animate rows when results arrive or change** on the widget to turn it off.
+- **Text that fits** — long names and event names shrink to fit instead of being cut off.
+- **Para races** — when the event file gives athletes a WPA class, the results table adds **Class** and **RAZA** columns, keeping finishing order.
+- **No names** — some races only have bib numbers; rows and cards then show the bib.
+- **Themes** — results, field boards and clocks follow the layout's theme.
 
 ## Widget reference
 
@@ -129,10 +158,8 @@ Open the Layout Builder to design custom scoreboard layouts from widgets. Each l
 | Running Clock / Stopped Time | Live or frozen clock. |
 | Event Name / Wind | Current or result event name and wind. |
 | Custom Text / Logo / Time of Day | Static text, an image/logo, or the time. |
-| RAZA Results | Para-athletics WPA points. |
-| Field Results / Recent Results / Jump Ruler / Vertical Jumps (PolyField) | Live field-event displays fed by the PolyField Field server — grouped under **PolyField Server** in the palette. See [Horizontal jump displays](#horizontal-jump-displays) and [Vertical jump displays](#vertical-jump-displays) below. |
+| Field Results / Recent Results / Throws / Jump Ruler / Vertical Jumps | Live field-event displays fed by PolyField Server, grouped under **PolyField Server**. See [Throws](#throws-display), [Horizontal jump displays](#horizontal-jump-displays) and [Vertical jump displays](#vertical-jump-displays). |
 | Text / Screensaver / Line View / Clock overlays | The text banner, screensaver image/layout, photo finish, and full-screen clock (shown when the operator triggers the matching overlay). |
-| Record Overlay | Celebratory record cards (drag-positioned elements, per-element size). |
 | Countdown Overlay | Countdown to a target time with an editable caption. |
 
 ## Combined Events points
@@ -150,7 +177,7 @@ The time used for the lookup is the value displayed (already rounded to the timi
 
 ## Horizontal jump displays {#horizontal-jump-displays}
 
-These widgets show live field-event data from a **PolyField Field server** on the same network. Add them from the **PolyField Server** group in the Layout Builder; each has an **IP address** and **Port** for the field server (default `192.168.0.90:8080`).
+These widgets show live field-event data from **PolyField Server** on the same network. Add them from the **PolyField Server** group in the Layout Builder. Set the server's address once in the main window, under **PolyField Server**; every field widget uses it.
 
 ### Jump Ruler (PolyField)
 
@@ -158,7 +185,7 @@ A pit-side ruler for **long jump and triple jump** — ideal for a long, thin LE
 
 ![The Jump Ruler in the Layout Builder — the pit-anchored scale with the current jumper, previous jumper, top-3 pins and the competition average](assets/jump-ruler.png)
 
-- **Tag it to one event.** Pick the event from the **Event** dropdown (only *Horizontal Jumps* events are listed). Several rulers can run at once for different events, each tagged separately.
+- **Follows the event in progress.** By default the ruler shows whichever horizontal-jumps event is in progress and moves on by itself. For rulers in different areas, tick the events each one should show. New rulers keep their text in a band above the pins.
 - **Take-off board.** The scale is pit-anchored: enter the **ruler start** for long jump and for each triple-jump board (**7 / 9 / 11 / 13 m**, to 2 decimal places, e.g. `11.02`). The athlete's active board (from the feed) sets which start the ruler uses, so marks always land in the right place.
 - **Top-3 pins.** The leading three marks show as height-staggered pins (1st tallest, then 2nd and 3rd), with 1st always drawn in front. A mark outside the visible range shows as an **arrowhead** at the edge pointing its way.
 - **Average pin.** An optional **Avg** pin plots the competition average.
@@ -176,9 +203,19 @@ A pit-side ruler for **long jump and triple jump** — ideal for a long, thin LE
 
 ![Recent Results (PolyField) — the last three completed field performances](assets/recent-results.png)
 
+## Throws display {#throws-display}
+
+**Throws** shows a shot, discus, hammer or javelin competition from PolyField Server, with every landing plotted in the sector and distance arcs. Like the other field boards it follows the event in progress by default.
+
+- The current athlete's throws, numbered by round; everyone else's landings as a heat map; the competition best as a gold star.
+- The latest throw drops in as it's measured. If it takes the lead, a **NEW BEST** banner wipes across first.
+- Athlete, club, round, performance, position, best and *needed to lead* are separate text pieces you drag into place.
+- **Small LED panel** makes markers bigger and removes fine detail for low-resolution walls. The sector sits in a box you size, so it never runs into the text.
+- Needs the PolyField Server version that sends rotated landing coordinates.
+
 ## Vertical jump displays {#vertical-jump-displays}
 
-**Vertical Jumps (PolyField)** shows a **high jump or pole vault** competition, tagged to one event (only *Vertical Jumps* events appear in its **Event** dropdown). It's in the **PolyField Server** palette group and has two styles.
+**Vertical Jumps** shows a **high jump or pole vault** competition. Like the other field boards it follows the event in progress by default; tick events to tie a board to its area. It's in the **PolyField Server** palette group and has two styles.
 
 ### Advanced — qualifying board
 
@@ -238,14 +275,14 @@ Open `<IP-ADDRESS>:3000/athlete`. An athlete searches by name or bib number; cli
 
 ## FinishLynx & TimeTronics setup {#finishlynx-setup}
 
-- **Scoreboard scripts** — use the supplied `polyfield.lss`, `polyfield-wind.lss` and `polyfield-backup.lss` scripts so FinishLynx sends the live running clock, wind, start lists and results to PolyField Track. See **[Scoreboard setup](#scoreboard-setup)** below for how to configure each output.
+- **Scoreboard scripts** — use the supplied `polyfield.lss`, `polyfield-wind.lss` and `polyfield-backup.lss` scripts so FinishLynx sends the live running clock, wind, start lists and results to PolyField & Track Display. See **[Scoreboard setup](#scoreboard-setup)** below for how to configure each output.
 - **Records** — flag an athlete's record in the FinishLynx **User 3** field (e.g. `PB` or `W50 WR`). Record codes are expanded to full titles from the club list.
 - **Line view** — export your photo-finish images (JPG) into the monitored results folder; the Line View button enables once they appear.
 - **Results** — save your LIF as normal; PolyField only displays saved results.
 
 ### Scoreboard setup (FinishLynx) {#scoreboard-setup}
 
-PolyField Track receives the running clock, start lists, live results and wind over a single UDP feed on **port 5001**. FinishLynx sends this through its **Scoreboard** outputs (**Options → Scoreboard**). Set up the outputs below — each is a **Network (UDP)** scoreboard pointed at the computer running PolyField Track.
+PolyField & Track Display receives the running clock, start lists, live results and wind over a single UDP feed on **port 5001**. FinishLynx sends this through its **Scoreboard** outputs (**Options → Scoreboard**). Set up the outputs below — each is a **Network (UDP)** scoreboard pointed at the computer running PolyField & Track Display.
 
 **Settings common to every output:**
 
@@ -253,7 +290,7 @@ PolyField Track receives the running clock, start lists, live results and wind o
 |---|---|
 | Serial Port | Network (UDP) |
 | Port | `5001` |
-| IP Address | the IP of the computer running PolyField Track |
+| IP Address | the IP of the computer running PolyField & Track Display |
 | Code Set | Single Byte |
 | Results | Auto · Paging on |
 
@@ -261,13 +298,13 @@ PolyField Track receives the running clock, start lists, live results and wind o
 
 The primary feed: running clock, start lists and live results.
 
-![FinishLynx Scoreboard settings for the main PolyField Track output](assets/scoreboard-main.png)
+![FinishLynx Scoreboard settings for the main PolyField & Track Display output](assets/scoreboard-main.png)
 
-- **Script:** `polyfield.lss` · **Name:** PolyField Track
+- **Script:** `polyfield.lss` · **Name:** PolyField & Track Display
 - **Running Time:** Normal
 - **Running Time → Options:** *Send results if armed* ✓
 - **Auto Break:** *Finish* ✓ (with *if capturing* ✓)
-- **Results → Options:** *Always send place* ✓ · *Include first name* ✓ · *Track live results* ✓ (leave *Affiliation abbreviation* off — PolyField Track expands club names from its own club list)
+- **Results → Options:** *Always send place* ✓ · *Include first name* ✓ · *Track live results* ✓ (leave *Affiliation abbreviation* off — PolyField & Track Display expands club names from its own club list)
 
 #### 2. Wind output — `polyfield-wind.lss`
 
@@ -275,27 +312,40 @@ A dedicated output for wind readings.
 
 ![FinishLynx Scoreboard settings for the wind output](assets/scoreboard-wind.png)
 
-- **Script:** `polyfield-wind.lss` · **Name:** PolyField Track Wind
-- **Running Time:** **Raw** — wind fires on every beam break; Raw mode passes each reading straight through (PolyField Track ignores the "no data" values)
+- **Script:** `polyfield-wind.lss` · **Name:** PolyField & Track Display Wind
+- **Running Time:** **Raw** — wind fires on every beam break; Raw mode passes each reading straight through (PolyField & Track Display ignores the "no data" values)
 - **Running Time → Options:** *Send results if armed* off
 - **Results → Options:** *Always send place* ✓ · *Include first name* ✓ · *Affiliation abbreviation* ✓ · *Track live results* ✓
 
 #### 3. Backup output — `polyfield-backup.lss` (recommended)
 
-A second, independent copy of the **start list** for resilience. FinishLynx sends each start list only once when the event loads, so a single dropped UDP packet can leave a screen blank. This backup output sends an identical start list from a separate scoreboard, so if one packet is lost the other still arrives. Point it at the **same** PolyField Track computer.
+A second, independent copy of the **start list** for resilience. FinishLynx sends each start list only once when the event loads, so a single dropped UDP packet can leave a screen blank. This backup output sends an identical start list from a separate scoreboard, so if one packet is lost the other still arrives. Point it at the **same** PolyField & Track Display computer.
 
 ![FinishLynx Scoreboard settings for the backup start-list output](assets/scoreboard-backup.png)
 
-- **Script:** `polyfield-backup.lss` · **Name:** PolyField Track Backup
+- **Script:** `polyfield-backup.lss` · **Name:** PolyField & Track Display Backup
 - **Running Time:** Normal
 - **Running Time → Options:** *Send results if armed* ✓
 - **Results → Options:** *Always send place* ✓ · *Include first name* ✓ · *Track live results* ✓
 
-> All three outputs can run at once and send to the same IP and port — PolyField Track sorts them out by content.
+> All three outputs can run at once and send to the same IP and port — PolyField & Track Display sorts them out by content.
+
+## Webcasting with OBS {#webcasting}
+
+Use PolyField & Track Display as a see-through graphics layer over a video stream in OBS.
+
+1. Build a layout for the stream — the **Webcast lower third** template is a good start. Keep widgets to the edges of the picture.
+2. In OBS add a **Browser** source, 1920 × 1080, with the address `http://<address>:3000/display/<number>?transparent=1`.
+3. In the Layout Builder, tick that screen under **Show on screens** on your stream layout.
+
+Everything that isn't a widget is see-through, and widgets with no data yet stay hidden. Untick **Wipe between different results** on the stream layout so the wipe doesn't cover the camera.
+
+> **Streaming without the results network's data** — if your results network runs on a 4G SIM, connect the OBS computer to both networks and give the results network adapter no default gateway. The stream then goes out over the other connection.
 
 ## Networking
 
-- The app serves on **port 3000** and advertises itself as `track.local` on the network, so displays can use `http://track.local:3000` without knowing the IP.
+- The app serves on **port 3000** and advertises itself as `display.local`, so displays can use `http://display.local:3000` without knowing the IP. Screens set up with the old `track.local` keep working.
+- Set the **PolyField Server** address once in the main window; every field widget uses it.
 - On computers with more than one network card (common on Windows), pick the correct network adapter in the connection panel so the right address is advertised.
 - All devices must be on the same network as the host computer.
 
@@ -304,18 +354,18 @@ A second, independent copy of the **start list** for resilience. FinishLynx send
 | Symptom | Check |
 |---|---|
 | Line View button is greyed out | No photo-finish JPGs in the monitored folder yet — check your FinishLynx image export path. |
-| Records shows nothing | The athlete must be flagged in FinishLynx User 3 or via manual selection, and the layout must contain a Record Overlay widget. |
+| No moment card appears | The layout needs Moments switched on. With **Finals only**, the event name must contain "Final". Each race plays once per screen, so saving the same file again won't replay it. |
 | A display shows “waiting for layout” | Assign a layout to that screen in the Screens panel. |
 | An old result reappeared | Opening a file in FinishLynx no longer promotes it; only a real change does. Use Browse LIF to re-show past results intentionally. |
 | Displays can't connect | Confirm the same network, port 3000 reachable, and (multi-card PCs) the right network adapter is selected. |
 
 ## Download & support
 
-Download the latest version from [www.polyfield.co.uk](https://www.polyfield.co.uk) or the [releases page](https://github.com/KingstonPolyAC/PolyField-Track/releases). Support: [support@polyfield.co.uk](mailto:support@polyfield.co.uk).
+Download the latest version from [www.polyfield.co.uk](https://www.polyfield.co.uk) or the [releases page](https://github.com/KingstonPolyAC/PolyField-and-Track-Display/releases). Support: [support@polyfield.co.uk](mailto:support@polyfield.co.uk).
 
 ## API integration {#api-integration}
 
-PolyField Track serves a small **read-only HTTP + JSON API** on **port 3000**, on the **same local network** as your displays. It's the same interface the built-in displays use, so anything on the LAN — a custom scoreboard, a stats dashboard, a stream overlay, a venue's own signage — can read live results, the start list and the running clock straight from the app. Requests are plain `GET`, responses are JSON, there is no authentication, and CORS is open, so a browser page on the LAN can call it directly.
+PolyField & Track Display serves a small **read-only HTTP + JSON API** on **port 3000**, on the **same local network** as your displays. It's the same interface the built-in displays use, so anything on the LAN — a custom scoreboard, a stats dashboard, a stream overlay, a venue's own signage — can read live results, the start list and the running clock straight from the app. Requests are plain `GET`, responses are JSON, there is no authentication, and CORS is open, so a browser page on the LAN can call it directly.
 
 The API is **LAN-only by design** — the app does not expose it to the internet. **Any WAN- or internet-facing integration** (remote scoreboards, cloud services, a second venue) **should be discussed with us first** so it's done safely, typically over a VPN or a controlled reverse proxy rather than by opening the port to the world. Contact [support@polyfield.co.uk](mailto:support@polyfield.co.uk).
 
